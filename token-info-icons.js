@@ -7,8 +7,13 @@ class TokenInfoIcons {
             return;
                 
         let speed = actor.data.data.attributes.speed.value;
+        let cleanspeed = speed;
 
-        var cleanspeed = speed.replace(/Walk /g, "").replace(/Fly /g, "").replace(/Swim /g, "").replace(/Climb /g, "").replace(/ ft. /g, "/").replace(/ft./g, "").replace(/ft/g, "");
+        try {
+            cleanspeed = cleanspeed.replace(/Walk /g, "").replace(/Fly /g, "").replace(/Swim /g, "").replace(/Burrow /g, "").replace(/Climb /g, "").replace(/ feet /g, "/").replace(/feet/g, "").replace(/ ft. /g, "/").replace(/ft./g, "").replace(/ft/g, "");
+        } catch {
+            
+        }
 
         //console.log("TokenInfoIcons | Actor?", actor);
 
@@ -25,7 +30,7 @@ class TokenInfoIcons {
         
         let actor = game.actors.get(data.actorId);
         if (actor === undefined) return;
-        //console.log(actor);
+        console.log(actor);
         let perception = 10;
 
         if (game.system.data.name === "pf2e") {
