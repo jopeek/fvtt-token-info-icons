@@ -12,9 +12,9 @@ class TokenInfoIcons {
 
         //console.log("TokenInfoIcons | Actor?", actor);
 
-        let newdiv = '<div class="chalkdiv">';
+        let newdiv = '<div class="token-info-container">';
         
-        let sbutton = '<div class="control-icon chalkicon" title="Speed: ' + speed + '"><i class="fas fa-shoe-prints"></i> ' + cleanspeed + '</div>';
+        let sbutton = '<div class="control-icon token-info-icon" title="Speed: ' + speed + '"><i class="fas fa-shoe-prints"></i> ' + cleanspeed + '</div>';
        
         html.find('.attribute.elevation').wrap(newdiv);
         html.find('.attribute.elevation').before(sbutton);
@@ -24,14 +24,20 @@ class TokenInfoIcons {
     static async addPerceptionButton(app, html, data) {
         
         let actor = game.actors.get(data.actorId);
-        if (actor === undefined)
-            return;
-                
-        let perception = 10 + actor.data.data.skills.prc.mod;
+        if (actor === undefined) return;
+        //console.log(actor);
+        let perception = 10;
 
-        let newdiv = '<div class="chalkdiv">';
+        if (game.system.data.name === "pf2e") {
+            const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
+            perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
+        } else {
+            perception = perception + actor.data.data.skills.prc.mod;
+        }
+        
+        let newdiv = '<div class="token-info-container">';
 
-        let pbutton = $('<div class="control-icon chalkicon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>');
+        let pbutton = $('<div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>');
 
         html.find('.control-icon.target').wrap(newdiv);
         html.find('.control-icon.target').before(pbutton);
@@ -46,9 +52,9 @@ class TokenInfoIcons {
                 
         let ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
 
-        let newdiv = '<div class="chalkdiv">';
+        let newdiv = '<div class="token-info-container">';
 
-        let pbutton = $('<div class="control-icon chalkicon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>');
+        let pbutton = $('<div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>');
 
         html.find('.control-icon.config').wrap(newdiv);
         html.find('.control-icon.config').before(pbutton);

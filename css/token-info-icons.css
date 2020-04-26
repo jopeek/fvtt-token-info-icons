@@ -1,4 +1,4 @@
-.control-icon.chalkicon {
+.control-icon.token-info-icon {
 	width: fit-content;
 	min-width: 42px;
 	flex-basis: auto;
@@ -11,7 +11,7 @@
 	flex: 0 0 42px;
 }
 
-.chalkdiv {
+.token-info-container {
 	display: flex; 
 	flex-direction: row; 
 	justify-content: flex-end; 
