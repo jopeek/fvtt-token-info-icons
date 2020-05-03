@@ -5,8 +5,8 @@ class TokenInfoIcons {
         let actor = game.actors.get(data.actorId);
         if (actor === undefined)
             return;
-                
-        let speed = actor.data.data.attributes.speed.value;
+        
+        let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : actor.data.data.attributes.speed.value;
         let cleanspeed = speed;
 
         try {
@@ -30,10 +30,11 @@ class TokenInfoIcons {
         
         let actor = game.actors.get(data.actorId);
         if (actor === undefined) return;
-        console.log(actor);
         let perception = 10;
 
-        if (game.system.data.name === "pf2e") {
+        if (game.world.system === "pf1") {
+            perception = actor.data.data.skills.per.mod
+        } else if (game.world.system === "pf2e") {
             const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
             perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
         } else {
@@ -54,8 +55,13 @@ class TokenInfoIcons {
         let actor = game.actors.get(data.actorId);
         if (actor === undefined)
             return;
-                
-        let ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+
+        let ac = 10
+        if (game.world.system === "pf1") {
+          ac = actor.data.data.attributes.ac.normal.total
+        } else {
+          ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+        }
 
         let newdiv = '<div class="token-info-container">';
 
