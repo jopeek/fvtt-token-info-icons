@@ -38,7 +38,7 @@ class TokenInfoIcons {
             const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
             perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
         } else {
-            perception = perception + actor.data.data.skills.prc.total;
+            perception = actor.data.data.skills.prc.passive;
         }
         
         let newdiv = '<div class="token-info-container">';
