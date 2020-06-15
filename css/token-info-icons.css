@@ -1,5 +1,6 @@
 .control-icon.token-info-icon {
 	width: fit-content;
+	width: -moz-fit-content;
 	min-width: 42px;
 	flex-basis: auto;
 	padding: 0 8px;
