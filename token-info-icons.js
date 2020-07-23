@@ -2,9 +2,9 @@ class TokenInfoIcons {
 
 	static async addSpeedButton(app, html, data) {
         
-        let actor = game.actors.get(data.actorId);
-        if (actor === undefined)
-            return;
+        let actor = canvas.tokens.get(data._id).actor;
+        //let actor = game.actors.get(data.actorId);
+        if (actor === undefined) return;
         
         let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : actor.data.data.attributes.speed.value;
         let cleanspeed = speed;
@@ -28,10 +28,11 @@ class TokenInfoIcons {
 
     static async addPerceptionButton(app, html, data) {
         
-        let actor = game.actors.get(data.actorId);
+        let actor = canvas.tokens.get(data._id).actor;
+        //let actor = game.actors.get(data.actorId);
         if (actor === undefined) return;
+        
         let perception = 10;
-
         if (game.world.system === "pf1") {
             perception = actor.data.data.skills.per.mod
         } else if (game.world.system === "pf2e") {
@@ -52,9 +53,9 @@ class TokenInfoIcons {
 
     static async addACButton(app, html, data) {
         
-        let actor = game.actors.get(data.actorId);
-        if (actor === undefined)
-            return;
+        let actor = canvas.tokens.get(data._id).actor;
+        //let actor = game.actors.get(data.actorId);
+        if (actor === undefined) return;
 
         let ac = 10
         if (game.world.system === "pf1") {
