@@ -6,7 +6,11 @@ class TokenInfoIcons {
         if (actor === undefined)
             return;
         
-        let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : actor.data.data.attributes.speed.value;
+        try {
+            let speed = game.world.system === "pf1" ? data.actorData.data.attributes.speed.land.total : data.actorData.data.attributes.speed.value;
+        } catch {
+            let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : actor.data.data.attributes.speed.value;
+        }
         let cleanspeed = speed;
 
         try {
@@ -38,7 +42,19 @@ class TokenInfoIcons {
             const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
             perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
         } else {
-            perception = actor.data.data.skills.prc.passive;
+            const flags = data.actorData.flags.dnd5e || actor.data.flags.dnd5e || {};
+            const observant_feat = flags.observantFeat || false;
+            let wis_mod = 0;
+            try {
+                wis_mod = data.actorData.data.abilities.wis.value
+            } catch {
+                wis_mod = actor.data.data.abilities.wis.mod
+            }
+            try {
+                perception = 10 + actor.data.data.attributes.prof * data.actorData.data.skills.prc.value + wis_mod + observant_feat*5;
+            } catch {
+                perception = actor.data.data.skills.prc.passive;
+            }
         }
         
         let newdiv = '<div class="token-info-container">';
@@ -60,7 +76,11 @@ class TokenInfoIcons {
         if (game.world.system === "pf1") {
           ac = actor.data.data.attributes.ac.normal.total
         } else {
-          ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+            try {
+                ac = (isNaN(parseInt(data.actorData.data.attributes.ac.value)) || parseInt(data.actorData.data.attributes.ac.value) === 0) ? 10 : parseInt(data.actorData.data.attributes.ac.value);
+            } catch {
+                ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+            }
         }
 
         let newdiv = '<div class="token-info-container">';
