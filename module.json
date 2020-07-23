@@ -1,6 +1,6 @@
 {
-	"name": "token-info-icons2",
-	"title": "Token Info Icons2",
+	"name": "token-info-icons",
+	"title": "Token Info Icons",
 	"description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM.",
 	"version": "1.1.51",
 	"minimumCoreVersion": "0.4.4",
