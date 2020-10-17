@@ -4,7 +4,7 @@
 	min-width: 42px;
 	flex-basis: auto;
 	padding: 0 8px;
-    margin: 8px 15px 8px 0;
+  margin: 8px 15px 8px 0 !important;
 }
 
 #token-hud .attribute.elevation {
@@ -19,4 +19,15 @@
 	align-items:center; 
 	margin-right: 75px;
 	flex: 0 !important;
+}
+
+.col.token-info-column-left {
+	left: -160px;
+	width: 120px;
+	padding-top: 9px;
+}
+.col.token-info-column-right {
+	right: -180px;
+	width: 120px;
+	padding-top: 9px;
 }
