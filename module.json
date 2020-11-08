@@ -4,7 +4,7 @@
 	"description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
 	"version": "2.0.1",
 	"minimumCoreVersion": "0.4.4",
-	"compatibleCoreVersion": "0.7.5",
+	"compatibleCoreVersion": "0.7.6",
 	"author": "Jan Ole Peek (ChalkOne)",
 	"systems": ["dnd5e", "pf2e", "pf1"],
 	"scripts": ["/token-info-icons.js"],
