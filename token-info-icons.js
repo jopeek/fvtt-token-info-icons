@@ -24,20 +24,24 @@ class TokenInfoIcons {
             perception = actor.data.data.skills.prc.passive;
         }
 
-        let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : actor.data.data.attributes.speed.value;
-        let cleanspeed = speed;
+        console.log("TokenInfoIcons", actor);
 
-        try {
-            cleanspeed = cleanspeed.replace(/Walk /g, "").replace(/Fly /g, "").replace(/Swim /g, "").replace(/Burrow /g, "").replace(/Climb /g, "").replace(/ feet /g, "/").replace(/feet/g, "").replace(/ ft. /g, "/").replace(/ft./g, "").replace(/ft/g, "");
-        } catch {
-            
-        }
+        let movement5e = "";
+        
+        if (actor.data.data.attributes.movement.walk != 0) movement5e += '<span style="white-space: pre;" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        if (actor.data.data.attributes.movement.swim != 0) movement5e += '<span style="white-space: pre;" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.data.data.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        if (actor.data.data.attributes.movement.fly != 0) movement5e += '<span style="white-space: pre;" title="Fly"><i class="fas fa-crow"></i> ' + actor.data.data.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        if (actor.data.data.attributes.movement.burrow != 0) movement5e += '<span style="white-space: pre;" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.data.data.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        if (actor.data.data.attributes.movement.climb != 0) movement5e += '<span style="white-space: pre;" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.data.data.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        
+
+        let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : movement5e;
 
         let newdiv = '<div class="token-info-container">';
 
         let position = game.settings.get("token-info-icons", "position");
 
-        let buttons = $('<div class="col token-info-column-' + position + '"><div class="control-icon token-info-icon" title="Speed: ' + speed + '"><i class="fas fa-shoe-prints"></i> ' + cleanspeed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div></div>');
+        let buttons = $('<div class="col token-info-column-' + position + '"><div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div></div>');
 
         html.find('.col.left').wrap(newdiv);
         html.find('.col.left').before(buttons);
