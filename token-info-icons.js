@@ -26,16 +26,19 @@ class TokenInfoIcons {
 
         console.log("TokenInfoIcons", actor);
 
-        let movement5e = "";
-        
-        if (actor.data.data.attributes.movement.walk != 0 && actor.data.data.attributes.movement.walk != null) movement5e += '<span style="white-space: pre;" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-        if (actor.data.data.attributes.movement.swim != 0 && actor.data.data.attributes.movement.swim != null) movement5e += '<span style="white-space: pre;" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.data.data.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-        if (actor.data.data.attributes.movement.fly != 0 && actor.data.data.attributes.movement.fly != null) movement5e += '<span style="white-space: pre;" title="Fly"><i class="fas fa-crow"></i> ' + actor.data.data.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-        if (actor.data.data.attributes.movement.burrow != 0 && actor.data.data.attributes.movement.burrow != null) movement5e += '<span style="white-space: pre;" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.data.data.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-        if (actor.data.data.attributes.movement.climb != 0 && actor.data.data.attributes.movement.climb != null) movement5e += '<span style="white-space: pre;" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.data.data.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-        
+        let speed = "";
 
-        let speed = game.world.system === "pf1" ? actor.data.data.attributes.speed.land.total : movement5e;
+        if (game.world.system === "pf2e") {
+            speed = '<span style="white-space: pre;" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.total + '</span>';
+        } else if (game.world.system === "pf1") {
+            speed = '<span style="white-space: pre;" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.land.total + '</span>';
+        } else {
+            if (actor.data.data.attributes.movement.walk != 0 && actor.data.data.attributes.movement.walk != null) speed += '<span style="white-space: pre;" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+            if (actor.data.data.attributes.movement.swim != 0 && actor.data.data.attributes.movement.swim != null) speed += '<span style="white-space: pre;" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.data.data.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+            if (actor.data.data.attributes.movement.fly != 0 && actor.data.data.attributes.movement.fly != null) speed += '<span style="white-space: pre;" title="Fly"><i class="fas fa-crow"></i> ' + actor.data.data.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+            if (actor.data.data.attributes.movement.burrow != 0 && actor.data.data.attributes.movement.burrow != null) speed += '<span style="white-space: pre;" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.data.data.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+            if (actor.data.data.attributes.movement.climb != 0 && actor.data.data.attributes.movement.climb != null) speed += '<span style="white-space: pre;" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.data.data.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+        }
 
         let newdiv = '<div class="token-info-container">';
 
