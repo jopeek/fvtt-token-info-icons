@@ -1,17 +1,14 @@
 class TokenInfoIcons {
-
-
     static async addTokenInfoButtons(app, html, data) {
-        
         let actor = canvas.tokens.get(data._id).actor;
         //let actor = game.actors.get(data.actorId);
         if (actor === undefined) return;
 
         let ac = 10
         if (game.world.system === "pf1") {
-          ac = actor.data.data.attributes.ac.normal.total
+            ac = actor.data.data.attributes.ac.normal.total
         } else {
-          ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+            ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
         }
 
         let perceptionTitle = "Passive Perception";
@@ -64,7 +61,6 @@ class TokenInfoIcons {
         html.find('.col.left').wrap(newdiv);
         html.find('.col.left').before(buttons);
     }
-
 }
 
 Hooks.on('ready', () => {
@@ -72,39 +68,41 @@ Hooks.on('ready', () => {
 
     if (gmOnly) {
         if (game.user.isGM) {
-            Hooks.on('renderTokenHUD', (app, html, data) => { TokenInfoIcons.addTokenInfoButtons(app, html, data) });
+            Hooks.on('renderTokenHUD', (app, html, data) => {
+                TokenInfoIcons.addTokenInfoButtons(app, html, data)
+            });
         }
     } else {
-        Hooks.on('renderTokenHUD', (app, html, data) => { TokenInfoIcons.addTokenInfoButtons(app, html, data) });
+        Hooks.on('renderTokenHUD', (app, html, data) => {
+            TokenInfoIcons.addTokenInfoButtons(app, html, data)
+        });
     }
-    
-	
 });
 
 Hooks.once("init", () => {
-	game.settings.register("token-info-icons", "gmOnly", {
-		name: "GM only?",
-		hint: "Show the token info to the GM only or to all players?",
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean
+    game.settings.register("token-info-icons", "gmOnly", {
+        name: "GM only?",
+        hint: "Show the token info to the GM only or to all players?",
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean
     });
-    
+
     const choices = new Array("Left", "Right");
 
     game.settings.register("token-info-icons", "position", {
-		name: "Token Position",
-		hint: "Which side of the token should the info appear on?",
+        name: "Token Position",
+        hint: "Which side of the token should the info appear on?",
         scope: "world",
         config: true,
-		type: String,
+        type: String,
         default: "left",
         choices: {
             "left": "left",
             "right": "right",
         }
-	});
+    });
 });
 
 console.log("Token Info Icons loaded");
