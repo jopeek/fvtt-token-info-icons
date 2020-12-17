@@ -1,3 +1,8 @@
+const MODULE_NAME = 'token-info-icons';
+const GMONLY_MODULE_SETTING = 'gmOnly';
+const ALL_PASSIVE_SENSES_MODULE_SETTING = 'allPassiveSenses';
+const POSITION_MODULE_SETTING = 'position';
+
 class TokenInfoIcons {
     static async addTokenInfoButtons(app, html, data) {
         let actor = canvas.tokens.get(data._id).actor;
