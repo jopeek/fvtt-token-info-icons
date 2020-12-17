@@ -24,7 +24,7 @@ class TokenInfoIcons {
         } else if (game.world.system === "pf2e") {
             if (actor.data.type === "npc" || actor.data.type === "familiar") {
                 perception = perception + actor.data.data.attributes.perception.value;
-            }else {
+            } else {
                 const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
                 perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
             }
@@ -65,9 +65,9 @@ class TokenInfoIcons {
 
         let passiveSensesButtons = '';
         if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get(MODULE_NAME, ALL_PASSIVE_SENSES_MODULE_SETTING)) {
-            const investigation =  actor.data.data.skills.inv.passive;
-            const insight =  actor.data.data.skills.ins.passive;
-            const stealth =  actor.data.data.skills.ste.passive;
+            const investigation = actor.data.data.skills.inv.passive;
+            const insight = actor.data.data.skills.ins.passive;
+            const stealth = actor.data.data.skills.ste.passive;
 
             const passiveInvestigationButton = `<div class="control-icon token-info-icon" title="Passive Investigation: ${investigation}"><i class="fas fa-search"></i>${investigation}</div></div>`;
             const passiveInsightButton = `<div class="control-icon token-info-icon" title="Passive Insight: ${insight}"><i class="fas fa-lightbulb"></i>${insight}</div></div>`;
