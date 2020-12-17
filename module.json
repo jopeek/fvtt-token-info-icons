@@ -17,7 +17,7 @@
     "styles": [
         "/css/token-info-icons.css"
     ],
-    "url": "https://github.com/johnmartel/fvtt-token-info-icons",
-    "manifest": "https://raw.githubusercontent.com/johnmartel/fvtt-token-info-icons/master/module.json",
-    "download": "https://github.com/johnmartel/fvtt-token-info-icons/archive/master.zip"
+    "url": "https://github.com/jopeek/fvtt-token-info-icons",
+    "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-token-info-icons/master/module.json",
+    "download": "https://github.com/jopeek/fvtt-token-info-icons/archive/master.zip"
 }

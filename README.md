@@ -9,7 +9,7 @@ Simple module that displays Speed, AC, and Passive Perception on Tokens for the 
 To install a module, follow these instructions:
 
 1. Start FVTT and browse to the Game Modules tab in the Configuration and Setup menu
-2. Select the Install Module button and enter the following URL: https://raw.githubusercontent.com/johnmartel/fvtt-token-info-icons/master/module.json
+2. Select the Install Module button and enter the following URL: https://raw.githubusercontent.com/jopeek/fvtt-token-info-icons/master/module.json
 3. Click Install and wait for installation to complete 
 
 ### Feedback
