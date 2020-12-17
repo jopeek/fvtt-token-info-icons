@@ -61,7 +61,7 @@ class TokenInfoIcons {
 
         let position = game.settings.get(MODULE_NAME, POSITION_MODULE_SETTING);
 
-        let defaultButtons = '<div class="col token-info-column-' + position + '"><div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div></div>'
+        let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
 
         let passiveSensesButtons = '';
         if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get(MODULE_NAME, ALL_PASSIVE_SENSES_MODULE_SETTING)) {
@@ -75,7 +75,7 @@ class TokenInfoIcons {
             passiveSensesButtons = `${passiveInvestigationButton}${passiveInsightButton}${passiveStealthButton}`;
         }
 
-        let buttons = $(`${defaultButtons}${passiveSensesButtons}`);
+        let buttons = $(`<div class="col token-info-column-${position}">${defaultButtons}${passiveSensesButtons}</div>`);
 
         html.find('.col.left').wrap(newdiv);
         html.find('.col.left').before(buttons);
