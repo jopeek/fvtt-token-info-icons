@@ -31,3 +31,8 @@
 	width: 120px;
 	padding-top: 13px;
 }
+
+.token-info-speed {
+	white-space: pre;
+	display: block;
+}
