@@ -1,3 +1,4 @@
+[![Github All Releases](https://img.shields.io/github/downloads/jopeek/fvtt-token-info-icons/total.svg)]() [![Donate](https://img.shields.io/badge/Donate-BuyMeACoffee-green.svg)](https://www.buymeacoffee.com/ChalkOne)
 # FVTT - Token Info Icons
 
 Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM.
