@@ -28,7 +28,7 @@ class TokenInfoIcons {
             perception = actor.data.data.skills.prc.passive;
         }
 
-        console.log("TokenInfoIcons", actor);
+        //console.log("TokenInfoIcons", actor);
 
         let speed = "";
 
