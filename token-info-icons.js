@@ -13,10 +13,10 @@ class TokenInfoIcons {
 
         let perceptionTitle = "Passive Perception";
         let perception = 10;
-        if (game.world.system === "pf1") {
+        if (game.world.data..system === "pf1") {
             perception = actor.data.data.skills.per.mod
             perceptionTitle = "Perception Mod";
-        } else if (game.world.system === "pf2e") {
+        } else if (game.world.data.system === "pf2e") {
             if (actor.data.type === "npc" || actor.data.type === "familiar") {
                 perception = perception + actor.data.data.attributes.perception.value;
             } else {
