@@ -5,7 +5,7 @@ class TokenInfoIcons {
         if (actor === undefined) return;
 
         let ac = 10
-        if (game.world.system === "pf1") {
+        if (game.world.data.system === "pf1") {
             ac = actor.data.data.attributes.ac.normal.total
         } else {
             ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
@@ -32,7 +32,7 @@ class TokenInfoIcons {
 
         let speed = "";
 
-        if (game.world.system === "pf2e") {
+        if (game.world.data.system === "pf2e") {
             if (actor.data.type === "npc") {
                 speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i><span style="font-size: 0.65em;"> ' + actor.data.data.attributes.speed.value + '</span></span>';
             } else if (actor.data.type === "familiar") {
@@ -42,7 +42,7 @@ class TokenInfoIcons {
             } else {
                 speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.total + '</span>';
             }
-        } else if (game.world.system === "pf1") {
+        } else if (game.world.data.system === "pf1") {
             speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.land.total + '</span>';
         } else {
             if (actor.data.data.attributes.movement.walk != 0 && actor.data.data.attributes.movement.walk != null) speed += '<span class="token-info-speed" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
@@ -59,7 +59,7 @@ class TokenInfoIcons {
         let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
 
         let passiveSensesButtons = '';
-        if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
+        if (!['pf2e', 'pf1'].includes(game.world.data.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
             const investigation = actor.data.data.skills.inv.passive;
             const insight = actor.data.data.skills.ins.passive;
             const stealth = actor.data.data.skills.ste.passive;

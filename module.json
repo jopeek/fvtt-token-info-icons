@@ -2,7 +2,7 @@
     "name": "token-info-icons",
     "title": "Token Info Icons",
     "description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "minimumCoreVersion": "0.7.7",
     "compatibleCoreVersion": "0.8.6",
     "author": "Jan Ole Peek (ChalkOne)",
