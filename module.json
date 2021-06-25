@@ -6,7 +6,7 @@
     "minimumCoreVersion": "0.7.7",
     "compatibleCoreVersion": "0.8.6",
     "author": "Jan Ole Peek (ChalkOne)",
-    "systems": [
+    "system": [
         "dnd5e",
         "pf2e",
         "pf1"
