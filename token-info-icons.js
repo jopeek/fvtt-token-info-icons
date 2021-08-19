@@ -20,8 +20,7 @@ class TokenInfoIcons {
             if (actor.data.type === "npc" || actor.data.type === "familiar") {
                 perception = perception + actor.data.data.attributes.perception.value;
             } else {
-                const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
-                perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
+                perception += actor.data.data.attributes.perception.value;
             }
             perceptionTitle = "Perception DC";
         } else {
@@ -56,7 +55,7 @@ class TokenInfoIcons {
 
         let position = game.settings.get('token-info-icons', 'position');
 
-        let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
+        let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + `</div><div class="control-icon token-info-icon" title="${perceptionTitle}: ${perception}"><i class="fas fa-eye"></i> ${perception}</div>`
 
         let passiveSensesButtons = '';
         if (!['pf2e', 'pf1'].includes(game.world.data.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
@@ -108,7 +107,7 @@ Hooks.once("init", () => {
         name: 'Show all passive senses (dnd5e)',
         hint: 'Show passive perception/investigation/insight/stealth instead of just passive perception',
         scope: "world",
-        config: true,
+        config: game.system.id == "dnd5e",
         default: false,
         type: Boolean
     });
