@@ -17,12 +17,7 @@ class TokenInfoIcons {
             perception = actor.data.data.skills.per.mod
             perceptionTitle = "Perception Mod";
         } else if (game.world.data.system === "pf2e") {
-            if (actor.data.type === "npc" || actor.data.type === "familiar") {
-                perception = perception + actor.data.data.attributes.perception.value;
-            } else {
-                const proficiency = actor.data.data.attributes.perception.rank ? actor.data.data.attributes.perception.rank * 2 + actor.data.data.details.level.value : 0;
-                perception = perception + actor.data.data.abilities[actor.data.data.attributes.perception.ability].mod + proficiency + actor.data.data.attributes.perception.item;
-            }
+            perception = perception + actor.data.data.attributes.perception.value;
             perceptionTitle = "Perception DC";
         } else {
             perception = actor.data.data.skills.prc.passive;
