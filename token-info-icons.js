@@ -7,6 +7,9 @@ class TokenInfoIcons {
         let ac = 10
         if (game.world.data.system === "pf1") {
             ac = actor.data.data.attributes.ac.normal.total
+        }
+        else if (game.world.data.system === "dcc") {
+              ac = actor.data.data.attributes.ac.value
         } else {
             ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
         }
@@ -19,7 +22,12 @@ class TokenInfoIcons {
         } else if (game.world.data.system === "pf2e") {
             perception = perception + actor.data.data.attributes.perception.value;
             perceptionTitle = "Perception DC";
-        } else {
+        }
+        else if (game.world.data.system === "dcc") {
+          perception = 0
+          perceptionTitle = "Perception DC";
+        }
+         else {
             perception = actor.data.data.skills.prc.passive;
         }
 
@@ -39,6 +47,8 @@ class TokenInfoIcons {
             }
         } else if (game.world.data.system === "pf1") {
             speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.land.total + '</span>';
+        } else if (game.world.data.system === "dcc") {
+            speed = '<span class="token-info-speed" title="Movement"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.base + '</span>';
         } else {
             if (actor.data.data.attributes.movement.walk != 0 && actor.data.data.attributes.movement.walk != null) speed += '<span class="token-info-speed" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
             if (actor.data.data.attributes.movement.swim != 0 && actor.data.data.attributes.movement.swim != null) speed += '<span class="token-info-speed" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.data.data.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
@@ -51,7 +61,11 @@ class TokenInfoIcons {
 
         let position = game.settings.get('token-info-icons', 'position');
 
-        let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div><div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
+        let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
+        if (game.world.data.system !== "dcc"){
+          defaultButtons += '<div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
+        }
+        
 
         let passiveSensesButtons = '';
         if (!['pf2e', 'pf1'].includes(game.world.data.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
