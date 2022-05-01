@@ -28,7 +28,7 @@ class TokenInfoIcons {
         perceptionTitle = "Perception DC";
       }
        else {
-          perception = actor.data.data.skills.prc.passive;
+          perception = actor.data.data.skills?.prc?.passive || 0;
       }
 
       //console.log("TokenInfoIcons", actor);
