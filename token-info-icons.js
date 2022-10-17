@@ -1,3 +1,5 @@
+const NPC_TYPE = 'npc'
+
 class TokenInfoIcons {
   static async addTokenInfoButtons(app, html, data) {
       let actor = canvas.tokens.get(data._id).actor;
@@ -69,8 +71,12 @@ class TokenInfoIcons {
       let newdiv = '<div class="token-info-container">';
 
       let position = game.settings.get('token-info-icons', 'position');
-
-      let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
+      let defaultButtons = "";
+      if (actor.data.type === NPC_TYPE) {
+          const cr = actor.data.system.details.cr;
+          defaultButtons += `<div class="control-icon token-info-icon" title="Monster CR: ${cr}"><i class="fas fa-paw-claws"></i> ${cr}</div>`;
+      }
+      defaultButtons += '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
       if (game.world.data.system !== "dcc"){
         defaultButtons += '<div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
       }else{
