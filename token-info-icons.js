@@ -5,64 +5,64 @@ class TokenInfoIcons {
       if (actor === undefined) return;
 
       let ac = 10
-      if (game.world.data.system === "pf1") {
-          ac = actor.data.data.attributes.ac.normal.total
+      if (game.world.system === "pf1") {
+          ac = actor.system.attributes.ac.normal.total
       }
-      else if (game.world.data.system === "dcc") {
-            ac = actor.data.data.attributes.ac.value
+      else if (game.world.system === "dcc") {
+            ac = actor.system.attributes.ac.value
       } else {
-          ac = (isNaN(parseInt(actor.data.data.attributes.ac.value)) || parseInt(actor.data.data.attributes.ac.value) === 0) ? 10 : parseInt(actor.data.data.attributes.ac.value);
+          ac = (isNaN(parseInt(actor.system.attributes.ac.value)) || parseInt(actor.system.attributes.ac.value) === 0) ? 10 : parseInt(actor.system.attributes.ac.value);
       }
 
       let perceptionTitle = "Passive Perception";
       let perception = 10;
-      if (game.world.data.system === "pf1") {
-          perception = actor.data.data.skills.per.mod
+      if (game.world.system === "pf1") {
+          perception = actor.system.skills.per.mod
           perceptionTitle = "Perception Mod";
-      } else if (game.world.data.system === "pf2e") {
-          perception = perception + actor.data.data.attributes.perception.value;
+      } else if (game.world.system === "pf2e") {
+          perception = perception + actor.system.attributes.perception.value;
           perceptionTitle = "Perception DC";
       }
-      else if (game.world.data.system === "dcc") {
+      else if (game.world.system === "dcc") {
         perception = 0
         perceptionTitle = "Perception DC";
       }
        else {
-          perception = actor.data.data.skills.prc.passive;
+          perception = actor.system.skills.prc.passive;
       }
 
       //console.log("TokenInfoIcons", actor);
 
       let speed = "";
 
-      if (game.world.data.system === "pf2e") {
+      if (game.world.system === "pf2e") {
           if (actor.data.type === "npc") {
-              speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i><span style="font-size: 0.65em;"> ' + actor.data.data.attributes.speed.value + '</span></span>';
+              speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i><span style="font-size: 0.65em;"> ' + actor.system.attributes.speed.value + '</span></span>';
           } else if (actor.data.type === "familiar") {
               // Familiars seem to get either 25 ft. land or water speed
               // It can be modified by other abilities but they will be revising these later so this will likely change
               speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i> 25</span>';
           } else {
-              speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.total + '</span>';
+              speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.system.attributes.speed.total + '</span>';
           }
-      } else if (game.world.data.system === "pf1") {
-          speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.land.total + '</span>';
-      } else if (game.world.data.system === "dcc") {
-          speed = '<span class="token-info-speed" title="Movement"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.speed.base + '</span>';
+      } else if (game.world.system === "pf1") {
+          speed = '<span class="token-info-speed" title="Land"><i class="fas fa-walking"></i> ' + actor.system.attributes.speed.land.total + '</span>';
+      } else if (game.world.system === "dcc") {
+          speed = '<span class="token-info-speed" title="Movement"><i class="fas fa-walking"></i> ' + actor.system.attributes.speed.base + '</span>';
       } else {
-          if (actor.data.data.attributes.movement.walk != 0 && actor.data.data.attributes.movement.walk != null) speed += '<span class="token-info-speed" title="Walk"><i class="fas fa-walking"></i> ' + actor.data.data.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-          if (actor.data.data.attributes.movement.swim != 0 && actor.data.data.attributes.movement.swim != null) speed += '<span class="token-info-speed" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.data.data.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-          if (actor.data.data.attributes.movement.fly != 0 && actor.data.data.attributes.movement.fly != null) speed += '<span class="token-info-speed" title="Fly"><i class="fas fa-crow"></i> ' + actor.data.data.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-          if (actor.data.data.attributes.movement.burrow != 0 && actor.data.data.attributes.movement.burrow != null) speed += '<span class="token-info-speed" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.data.data.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
-          if (actor.data.data.attributes.movement.climb != 0 && actor.data.data.attributes.movement.climb != null) speed += '<span class="token-info-speed" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.data.data.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.data.data.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.walk != 0 && actor.system.attributes.movement.walk != null) speed += '<span class="token-info-speed" title="Walk"><i class="fas fa-walking"></i> ' + actor.system.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.swim != 0 && actor.system.attributes.movement.swim != null) speed += '<span class="token-info-speed" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.system.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.fly != 0 && actor.system.attributes.movement.fly != null) speed += '<span class="token-info-speed" title="Fly"><i class="fas fa-crow"></i> ' + actor.system.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.burrow != 0 && actor.system.attributes.movement.burrow != null) speed += '<span class="token-info-speed" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.system.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.climb != 0 && actor.system.attributes.movement.climb != null) speed += '<span class="token-info-speed" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.system.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
       }
 
       // DCC luck
 
       let luck = null;
-      if (game.world.data.system === "dcc") {
+      if (game.world.system === "dcc") {
         if (actor.data.type === "Player") {
-          luck =  actor.data.data.abilities.lck.value;
+          luck =  actor.system.abilities.lck.value;
         }
       }
 
@@ -71,7 +71,7 @@ class TokenInfoIcons {
       let position = game.settings.get('token-info-icons', 'position');
 
       let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
-      if (game.world.data.system !== "dcc"){
+      if (game.world.system !== "dcc"){
         defaultButtons += '<div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
       }else{
         // dcc specific
@@ -82,10 +82,10 @@ class TokenInfoIcons {
       
 
       let passiveSensesButtons = '';
-      if (!['pf2e', 'pf1'].includes(game.world.data.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
-          const investigation = actor.data.data.skills.inv.passive;
-          const insight = actor.data.data.skills.ins.passive;
-          const stealth = actor.data.data.skills.ste.passive;
+      if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
+          const investigation = actor.system.skills.inv.passive;
+          const insight = actor.system.skills.ins.passive;
+          const stealth = actor.system.skills.ste.passive;
 
           const passiveInvestigationButton = `<div class="control-icon token-info-icon" title="Passive Investigation: ${investigation}"><i class="fas fa-search"></i> ${investigation}</div>`;
           const passiveInsightButton = `<div class="control-icon token-info-icon" title="Passive Insight: ${insight}"><i class="fas fa-lightbulb"></i> ${insight}</div>`;

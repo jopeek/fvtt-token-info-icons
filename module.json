@@ -1,30 +1,16 @@
 {
-  "name": "token-info-icons",
-  "id": "token-info-icons",
   "title": "Token Info Icons",
   "description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
-  "version": "2.3.9",
-  "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion": "10",
-  "author": "Jan Ole Peek (ChalkOne)",
-  "authors": [ { "name" : "Jan Ole Peek (ChalkOne)" } ],
-  "system": [
-    "dnd5e",
-    "pf2e",
-    "pf1",
-    "dcc"
+  "version": "2.3.10",
+  "authors": [
+    {
+      "name": "Jan Ole Peek (ChalkOne)",
+      "flags": {}
+    }
   ],
-  "compatibility" : {
-    "minimum" : "0.8.0",
-    "verified" : "10"
-  },
-  "relationships" : {
-    "systems" : [
-      { "id" : "dnd5e", "type": "system" },
-      { "id" : "pf2e", "type": "system" },
-      { "id" : "pf1", "type": "system" },
-      { "id" : "dcc", "type": "system" }
-    ]
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
   },
   "scripts": [
     "/token-info-icons.js"
@@ -34,5 +20,30 @@
   ],
   "url": "https://github.com/jopeek/fvtt-token-info-icons",
   "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-token-info-icons/master/module.json",
-  "download": "https://github.com/jopeek/fvtt-token-info-icons/archive/refs/heads/master.zip"
+  "download": "https://github.com/jopeek/fvtt-token-info-icons/archive/refs/heads/master.zip",
+  "id": "token-info-icons",
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "pf1",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "dcc",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  }
 }
