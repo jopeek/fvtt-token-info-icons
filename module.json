@@ -1,17 +1,7 @@
 {
   "title": "Token Info Icons",
   "description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
-  "version": "2.3.10",
-  "authors": [
-    {
-      "name": "Jan Ole Peek (ChalkOne)",
-      "flags": {}
-    }
-  ],
-  "compatibility": {
-    "minimum": "10",
-    "verified": "10"
-  },
+  "version": "2.3.11",
   "scripts": [
     "/token-info-icons.js"
   ],
@@ -22,6 +12,16 @@
   "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-token-info-icons/master/module.json",
   "download": "https://github.com/jopeek/fvtt-token-info-icons/archive/refs/heads/master.zip",
   "id": "token-info-icons",
+  "authors": [
+    {
+      "name": "Jan Ole Peek (ChalkOne)",
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "0.8.0",
+    "verified": "11"
+  },
   "relationships": {
     "systems": [
       {
