@@ -1,7 +1,7 @@
 {
   "title": "Token Info Icons",
   "description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
-  "version": "11.300.2",
+  "version": "12.0.0",
   "scripts": [
     "/token-info-icons.js"
   ],
@@ -20,7 +20,7 @@
   ],
   "compatibility": {
     "minimum": "0.8.0",
-    "verified": "11"
+    "verified": "12"
   },
   "relationships": {
     "systems": [
