@@ -1,24 +1,54 @@
 {
-  "name": "token-info-icons",
   "title": "Token Info Icons",
   "description": "Simple module that displays Speed, AC, and Passive Perception on Tokens for the GM or optionally players.",
-  "version": "2.3.7",
-  "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion": "9",
-  "author": "Jan Ole Peek (ChalkOne)",
-  "system": [
-    "dnd5e",
-    "pf2e",
-    "pf1",
-    "dcc"
-  ],
+  "version": "12.328.0",
   "scripts": [
     "/token-info-icons.js"
   ],
   "styles": [
     "/css/token-info-icons.css"
   ],
-  "url": "https://github.com/polyvision/fvtt-token-info-icons",
-  "manifest": "https://raw.githubusercontent.com/polyvision/fvtt-token-info-icons/master/module.json",
-  "download": "https://github.com/polyvision/fvtt-token-info-icons/archive/refs/heads/master.zip"
+  "url": "https://github.com/jopeek/fvtt-token-info-icons",
+  "manifest": "https://raw.githubusercontent.com/jopeek/fvtt-token-info-icons/master/module.json",
+  "download": "https://github.com/jopeek/fvtt-token-info-icons/archive/refs/heads/master.zip",
+  "id": "token-info-icons",
+  "authors": [
+    {
+      "name": "Jan Ole Peek (ChalkOne)",
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "0.8.0",
+    "verified": "12.328",
+    "maximum": "12"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "2.2.2",
+          "verified": "4.0.0",
+          "maximum": "4.9.9"
+        }
+      },
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "pf1",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "dcc",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  }
 }
