@@ -83,9 +83,9 @@ class TokenInfoIcons {
 
       let passiveSensesButtons = '';
       if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
-          const investigation = actor.system.skills.inv.passive;
-          const insight = actor.system.skills.ins.passive;
-          const stealth = actor.system.skills.ste.passive;
+          const investigation = actor.system.skills?.inv?.passive || 0;
+          const insight = actor.system.skills?.ins?.passive || 0;
+          const stealth = actor.system.skills?.ste?.passive || 0;
 
           const passiveInvestigationButton = `<div class="control-icon token-info-icon" title="Passive Investigation: ${investigation}"><i class="fas fa-search"></i> ${investigation}</div>`;
           const passiveInsightButton = `<div class="control-icon token-info-icon" title="Passive Insight: ${insight}"><i class="fas fa-lightbulb"></i> ${insight}</div>`;
