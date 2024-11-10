@@ -20,7 +20,7 @@ class TokenInfoIcons {
           perception = actor.system.skills.per.mod
           perceptionTitle = "Perception Mod";
       } else if (game.world.system === "pf2e") {
-          perception = perception + actor.system.attributes.perception.value;
+          perception = perception + actor.perception.mod;
           perceptionTitle = "Perception DC";
       }
       else if (game.world.system === "dcc") {
@@ -36,9 +36,9 @@ class TokenInfoIcons {
       let speed = "";
 
       if (game.world.system === "pf2e") {
-          if (actor.data.type === "npc") {
+          if (actor.system.type === "npc") {
               speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i><span style="font-size: 0.65em;"> ' + actor.system.attributes.speed.value + '</span></span>';
-          } else if (actor.data.type === "familiar") {
+          } else if (actor.system.type === "familiar") {
               // Familiars seem to get either 25 ft. land or water speed
               // It can be modified by other abilities but they will be revising these later so this will likely change
               speed = '<span class="token-info-speed" title="Speed"><i class="fas fa-walking"></i> 25</span>';
