@@ -1,38 +1,20 @@
 .control-icon.token-info-icon {
-	width: fit-content;
-	width: -moz-fit-content;
-	min-width: 42px;
-	flex-basis: auto;
-	padding: 0 8px;
-  margin: 8px 25px 8px 0 !important;
+    width: 100%;
+    flex-basis: auto;
+    padding: 0 8px;
+    margin: 2px 0 2px 0 !important;
 }
 
-#token-hud .attribute.elevation {
-	width: 42px;
-	flex: 0 0 42px;
+#token-hud .token-info.col {
+	justify-content: center;
 }
 
-.token-info-container {
-	display: flex; 
-	flex-direction: row; 
-	justify-content: flex-end; 
-	align-items:center; 
-	margin-right: 75px;
-	flex: 0 !important;
+#token-hud .token-info.col.far-left {
+	left: calc(-1 * var(--column-width) - (var(--column-width) * 2));
+	align-items: flex-end;
 }
 
-.col.token-info-column-left {
-	left: -160px;
-	width: 120px;
-	padding-top: 13px;
-}
-.col.token-info-column-right {
-	right: -180px;
-	width: 120px;
-	padding-top: 13px;
-}
-
-.token-info-speed {
-	white-space: pre;
-	display: block;
+#token-hud .token-info.col.far-right {
+	right: calc(-1 * var(--column-width) - (var(--column-width) * 1.75));
+	align-items: flex-start;
 }
