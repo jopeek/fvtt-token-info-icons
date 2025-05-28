@@ -66,8 +66,6 @@ class TokenInfoIcons {
         }
       }
 
-      let newdiv = '';
-
       let position = game.settings.get('token-info-icons', 'position');
 
       let defaultButtons = speed + '<div class="token-info-icon control-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
@@ -95,7 +93,6 @@ class TokenInfoIcons {
 
       let buttons = $(`<div class="token-info col far-${position}">${defaultButtons}${passiveSensesButtons}</div>`);
 
-      $(html).find(`.col.${position}`).wrap(newdiv);
       $(html).find(`.col.${position}`).after(buttons);
   }
 }
