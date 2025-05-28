@@ -50,11 +50,11 @@ class TokenInfoIcons {
       } else if (game.world.system === "dcc") {
           speed = '<span class="token-info-speed" title="Movement"><i class="fas fa-walking"></i> ' + actor.system.attributes.speed.base + '</span>';
       } else {
-          if (actor.system.attributes.movement.walk != 0 && actor.system.attributes.movement.walk != null) speed += '<span class="token-info-speed" title="Walk"><i class="fas fa-walking"></i> ' + actor.system.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
-          if (actor.system.attributes.movement.swim != 0 && actor.system.attributes.movement.swim != null) speed += '<span class="token-info-speed" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.system.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
-          if (actor.system.attributes.movement.fly != 0 && actor.system.attributes.movement.fly != null) speed += '<span class="token-info-speed" title="Fly"><i class="fas fa-crow"></i> ' + actor.system.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
-          if (actor.system.attributes.movement.burrow != 0 && actor.system.attributes.movement.burrow != null) speed += '<span class="token-info-speed" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.system.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
-          if (actor.system.attributes.movement.climb != 0 && actor.system.attributes.movement.climb != null) speed += '<span class="token-info-speed" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.system.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></span>";
+          if (actor.system.attributes.movement.walk != 0 && actor.system.attributes.movement.walk != null) speed += '<div class="token-info-icon control-icon" title="Walk"><i class="fas fa-walking"></i> ' + actor.system.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
+          if (actor.system.attributes.movement.swim != 0 && actor.system.attributes.movement.swim != null) speed += '<div class="token-info-icon control-icon" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.system.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
+          if (actor.system.attributes.movement.fly != 0 && actor.system.attributes.movement.fly != null) speed += '<div class="token-info-icon control-icon" title="Fly"><i class="fas fa-crow"></i> ' + actor.system.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
+          if (actor.system.attributes.movement.burrow != 0 && actor.system.attributes.movement.burrow != null) speed += '<div class="token-info-icon control-icon" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.system.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
+          if (actor.system.attributes.movement.climb != 0 && actor.system.attributes.movement.climb != null) speed += '<div class="token-info-icon control-icon" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.system.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
       }
 
       // DCC luck
@@ -66,20 +66,18 @@ class TokenInfoIcons {
         }
       }
 
-      let newdiv = '<div class="token-info-container">';
-
       let position = game.settings.get('token-info-icons', 'position');
 
-      let defaultButtons = '<div class="control-icon token-info-icon">' + speed + '</div><div class="control-icon token-info-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
+      let defaultButtons = speed + '<div class="token-info-icon control-icon" title="Armor Class: ' + ac + '"><i class="fas fa-shield-alt"></i> ' + ac + '</div>';
       if (game.world.system !== "dcc"){
-        defaultButtons += '<div class="control-icon token-info-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
+        defaultButtons += '<div class="token-info-icon control-icon" title="Passive Perception: ' + perception + '"><i class="fas fa-eye"></i> ' + perception + '</div>'
       }else{
         // dcc specific
         if(luck != null){
-          defaultButtons += '<div class="control-icon token-info-icon" title="Luck: ' + luck + '"><i class="fas fa-star"></i> ' + luck + '</div>'
+          defaultButtons += '<div class="token-info-icon control-icon" title="Luck: ' + luck + '"><i class="fas fa-star"></i> ' + luck + '</div>'
         }
       }
-      
+
 
       let passiveSensesButtons = '';
       if (!['pf2e', 'pf1'].includes(game.world.system) && game.settings.get('token-info-icons', 'allPassiveSenses')) {
@@ -87,29 +85,22 @@ class TokenInfoIcons {
           const insight = actor.system.skills?.ins?.passive || 0;
           const stealth = actor.system.skills?.ste?.passive || 0;
 
-          const passiveInvestigationButton = `<div class="control-icon token-info-icon" title="Passive Investigation: ${investigation}"><i class="fas fa-search"></i> ${investigation}</div>`;
-          const passiveInsightButton = `<div class="control-icon token-info-icon" title="Passive Insight: ${insight}"><i class="fas fa-lightbulb"></i> ${insight}</div>`;
-          const passiveStealthButton = `<div class="control-icon token-info-icon" title="Passive Stealth: ${stealth}"><i class="fas fa-eye-slash"></i> ${stealth}</div>`;
+          const passiveInvestigationButton = `<div class="token-info-icon control-icon" title="Passive Investigation: ${investigation}"><i class="fas fa-search"></i> ${investigation}</div>`;
+          const passiveInsightButton = `<div class="token-info-icon control-icon" title="Passive Insight: ${insight}"><i class="fas fa-lightbulb"></i> ${insight}</div>`;
+          const passiveStealthButton = `<div class="token-info-icon control-icon" title="Passive Stealth: ${stealth}"><i class="fas fa-eye-slash"></i> ${stealth}</div>`;
           passiveSensesButtons = `${passiveInvestigationButton}${passiveInsightButton}${passiveStealthButton}`;
       }
 
-      let buttons = $(`<div class="col token-info-column-${position}">${defaultButtons}${passiveSensesButtons}</div>`);
+      let buttons = $(`<div class="token-info col far-${position}">${defaultButtons}${passiveSensesButtons}</div>`);
 
-      html.find('.col.left').wrap(newdiv);
-      html.find('.col.left').before(buttons);
+      $(html).find(`.col.${position}`).after(buttons);
   }
 }
 
 Hooks.on('ready', () => {
   const gmOnly = game.settings.get('token-info-icons', 'gmOnly');
 
-  if (gmOnly) {
-      if (game.user.isGM) {
-          Hooks.on('renderTokenHUD', (app, html, data) => {
-              TokenInfoIcons.addTokenInfoButtons(app, html, data)
-          });
-      }
-  } else {
+  if (gmOnly || game.user.isGM) {
       Hooks.on('renderTokenHUD', (app, html, data) => {
           TokenInfoIcons.addTokenInfoButtons(app, html, data)
       });
