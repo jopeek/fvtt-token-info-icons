@@ -50,11 +50,14 @@ class TokenInfoIcons {
       } else if (game.world.system === "dcc") {
           speed = '<span class="token-info-speed" title="Movement"><i class="fas fa-walking"></i> ' + actor.system.attributes.speed.base + '</span>';
       } else {
-          if (actor.system.attributes.movement.walk != 0 && actor.system.attributes.movement.walk != null) speed += '<div class="token-info-icon control-icon" title="Walk"><i class="fas fa-walking"></i> ' + actor.system.attributes.movement.walk + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
-          if (actor.system.attributes.movement.swim != 0 && actor.system.attributes.movement.swim != null) speed += '<div class="token-info-icon control-icon" title="Swim"><i class="fas fa-swimmer"></i> ' + actor.system.attributes.movement.swim + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
-          if (actor.system.attributes.movement.fly != 0 && actor.system.attributes.movement.fly != null) speed += '<div class="token-info-icon control-icon" title="Fly"><i class="fas fa-crow"></i> ' + actor.system.attributes.movement.fly + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
-          if (actor.system.attributes.movement.burrow != 0 && actor.system.attributes.movement.burrow != null) speed += '<div class="token-info-icon control-icon" title="Burrow"><i class="fas fa-mountain"></i> ' + actor.system.attributes.movement.burrow + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
-          if (actor.system.attributes.movement.climb != 0 && actor.system.attributes.movement.climb != null) speed += '<div class="token-info-icon control-icon" title="Climb"><i class="fas fa-grip-lines"></i> ' + actor.system.attributes.movement.climb + '<span style="font-size: 0.5em;"> ' + actor.system.attributes.movement.units + "</span></div>";
+          const movement = actor.system.attributes.movement;
+          // dnd5e 6.0 moved speeds under movement.speeds; fall back to the 5.x location.
+          const speeds = movement.speeds ?? movement;
+          if (speeds.walk != 0 && speeds.walk != null) speed += '<div class="token-info-icon control-icon" title="Walk"><i class="fas fa-walking"></i> ' + speeds.walk + '<span style="font-size: 0.5em;"> ' + movement.units + "</span></div>";
+          if (speeds.swim != 0 && speeds.swim != null) speed += '<div class="token-info-icon control-icon" title="Swim"><i class="fas fa-swimmer"></i> ' + speeds.swim + '<span style="font-size: 0.5em;"> ' + movement.units + "</span></div>";
+          if (speeds.fly != 0 && speeds.fly != null) speed += '<div class="token-info-icon control-icon" title="Fly"><i class="fas fa-crow"></i> ' + speeds.fly + '<span style="font-size: 0.5em;"> ' + movement.units + "</span></div>";
+          if (speeds.burrow != 0 && speeds.burrow != null) speed += '<div class="token-info-icon control-icon" title="Burrow"><i class="fas fa-mountain"></i> ' + speeds.burrow + '<span style="font-size: 0.5em;"> ' + movement.units + "</span></div>";
+          if (speeds.climb != 0 && speeds.climb != null) speed += '<div class="token-info-icon control-icon" title="Climb"><i class="fas fa-grip-lines"></i> ' + speeds.climb + '<span style="font-size: 0.5em;"> ' + movement.units + "</span></div>";
       }
 
       // DCC luck
